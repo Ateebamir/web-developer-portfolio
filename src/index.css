@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+@theme {
+  --color-border: hsl(var(--border));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-card: hsl(var(--card));
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
+  --animate-fade-in: fade-in 0.7s ease-out forwards;
+  --animate-fade-in-delay-1: fade-in 0.7s ease-out 0.2s forwards;
+  --animate-fade-in-delay-2: fade-in 0.7s ease-out 0.4s forwards;
+  --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
+  --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
+  --animate-meteor: meteor 5s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes pulse-subtle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes meteor {
+    0% { transform: rotate(215deg) translateX(0); opacity: 1; }
+    70% { opacity: 1; }
+    100% { transform: rotate(215deg) translateX(-500px); opacity: 0; }
+  }
+
+  @keyframes neon-glow {
+    0% {
+      text-shadow: 0 0 5px rgba(255, 165, 0, 0.3), 0 0 10px rgba(255, 165, 0, 0.3);
+    }
+    50% {
+      text-shadow: 0 0 20px rgba(255, 140, 0, 0.8), 0 0 40px rgba(255, 165, 0, 0.6);
+    }
+    100% {
+      text-shadow: 0 0 5px rgba(255, 165, 0, 0.3), 0 0 10px rgba(255, 165, 0, 0.3);
+    }
+  }
+}
+
+@layer base {
+  :root {
+    --background: 30 100% 95%; /* Light mode orange pastel */
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --primary: 30 100% 55%;
+    --primary-foreground: 210 40% 98%;
+    --border: 214 32% 91%;
+  }
+
+  .dark {
+    --background: 222 47% 4%;
+    --foreground: 213 31% 91%;
+    --card: 222 47% 8%;
+    --primary: 30 100% 55%;
+    --primary-foreground: 213 31% 91%;
+    --border: 217 33% 20%;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: linear-gradient(
+      135deg,
+      hsl(30, 100%, 98%) 0%,
+      hsl(30, 100%, 95%) 50%,
+      hsl(30, 100%, 92%) 100%
+    );
+    color: hsl(var(--foreground));
+    transition: background 0.5s ease-in-out, color 0.3s ease-in-out;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Poppins', sans-serif; /* Stylish pro-level font */
+  }
+}
+
+/* Container utility */
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  @media (width >= 640px) { max-width: 640px; }
+  @media (width >= 768px) { max-width: 768px; }
+  @media (width >= 1024px) { max-width: 1024px; }
+  @media (width >= 1280px) { max-width: 1280px; }
+  @media (width >= 1400px) { max-width: 1400px; }
+}
+
+/* Neon-glow utility for Hero & Navbar text */
+@utility neon-glow {
+  @apply relative;
+  animation: neon-glow 2s infinite alternate;
+}
+
+/* Navbar links hover */
+@layer components {
+  .nav-link {
+    @apply transition-colors duration-300 hover:text-orange-500;
+  }
+}
+
+/* Button & Card Utilities */
+@utility card-hover {
+  @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg;
+}
+@utility gradient-border {
+  @apply relative rounded-md;
+  background: linear-gradient(to right, hsl(var(--card)), hsl(var(--card)));
+  background-clip: padding-box;
+  border: 1px solid transparent;
+}
+@utility cosmic-button {
+  @apply px-6 py-2 rounded-full bg-gradient-to-r from-orange-400 via-orange-500 to-yellow-400 
+         text-white font-medium transition-all duration-300 
+         hover:shadow-[0_0_20px_rgba(255,165,0,0.8)]
+         hover:scale-110 active:scale-95;
+}
+
+/* Stars & Meteors */
+@utility star {
+  @apply absolute rounded-full bg-white;
+  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
+}
+@utility meteor {
+  @apply absolute bg-linear-to-r from-white via-white to-transparent rounded-full;
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+}
+
+/* Ultra Pro Contact Boxes - Orange focus ring */
+.ultra-pro-contact-box input,
+.ultra-pro-contact-box textarea {
+  background: #fff;
+  border: 1px solid #ffc780;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.ultra-pro-contact-box input:focus,
+.ultra-pro-contact-box textarea:focus {
+  outline: none;
+  border-color: #ff9c42;
+  box-shadow: 0 0 0 2px rgba(255, 165, 0, 0.5); /* Orange focus ring */
+}
+
+/* Neon glow for Navbar and Hero text */
+.neon-glow {
+  text-shadow:
+     0 0 4px #ffb366,  /* lighter orange */
+     0 0 8px #ffb366,
+     0 0 12px #ffb366,
+     0 0 24px #ffb366;
+  transition: text-shadow 0.3s ease-in-out;
+}
+
+.neon-glow:hover {
+  text-shadow:
+     0 0 8px #ffb366,
+     0 0 16px #ffb366,
+     0 0 24px #ffb366,
+     0 0 48px #ffb366;
+}
+
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
