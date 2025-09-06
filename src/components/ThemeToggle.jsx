@@ -2,20 +2,38 @@ import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export const ThemeToggle = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true); // 👈 default dark
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
-    if (storedTheme === "dark") {
+
+    if (storedTheme) {
+      if (storedTheme === "dark") {
+        setIsDarkMode(true);
+        document.documentElement.classList.add("dark");
+      } else {
+        setIsDarkMode(false);
+        document.documentElement.classList.remove("dark");
+      }
+    } else {
+      // 👇 default dark if nothing in storage
+      localStorage.setItem("theme", "dark");
       setIsDarkMode(true);
       document.documentElement.classList.add("dark");
-    } else {
-      localStorage.setItem("theme", "light");
-      setIsDarkMode(false);
     }
+
+    // 👇 smooth transition apply on mount
+    document.documentElement.classList.add("theme-transition");
+    const timer = setTimeout(() => {
+      document.documentElement.classList.remove("theme-transition");
+    }, 500); // transition ka duration
+
+    return () => clearTimeout(timer);
   }, []);
 
   const toggleTheme = () => {
+    document.documentElement.classList.add("theme-transition"); // smooth transition on toggle
+
     if (isDarkMode) {
       document.documentElement.classList.remove("dark");
       localStorage.setItem("theme", "light");
@@ -25,6 +43,10 @@ export const ThemeToggle = () => {
       localStorage.setItem("theme", "dark");
       setIsDarkMode(true);
     }
+
+    setTimeout(() => {
+      document.documentElement.classList.remove("theme-transition");
+    }, 500);
   };
 
   return (

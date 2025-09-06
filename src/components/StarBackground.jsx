@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 export const StarBackground = () => {
   const [stars, setStars] = useState([]);
   const [meteors, setMeteors] = useState([]);
+  const [mounted, setMounted] = useState(false); // 👈 mounted trick
 
   useEffect(() => {
     generateStars();
 
-    // Night mode active? meteors turant start
+    // jab component mount ho to meteors check karo
     if (document.documentElement.classList.contains("dark")) {
       generateMeteors();
     }
@@ -15,8 +16,18 @@ export const StarBackground = () => {
     const handleResize = () => generateStars();
     window.addEventListener("resize", handleResize);
 
+    // 👇 force re-render after mount so meteors always appear first time
+    setMounted(true);
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // agar mounted ho aur theme dark ho → meteors dobara generate karo
+  useEffect(() => {
+    if (mounted && document.documentElement.classList.contains("dark")) {
+      generateMeteors();
+    }
+  }, [mounted]);
 
   const generateStars = () => {
     const numberOfStars = Math.floor((window.innerWidth * window.innerHeight) / 10000);
@@ -41,11 +52,11 @@ export const StarBackground = () => {
     for (let i = 0; i < numberOfMeteors; i++) {
       newMeteors.push({
         id: i,
-        size: Math.random() * 1 + 0.5, // chhota meteors
+        size: Math.random() * 1 + 0.5,
         x: Math.random() * 100,
-        y: Math.random() * 100, // pura screen
-        delay: i * 0.5, // har meteor ka timing slightly different
-        animationDuration: Math.random() * 2 + 2, // thodi tez movement
+        y: Math.random() * 100,
+        delay: i * 0.5,
+        animationDuration: Math.random() * 2 + 2,
       });
     }
     setMeteors(newMeteors);

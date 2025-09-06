@@ -178,3 +178,7 @@
   padding: 0;
   text-align: center;
 }
+/* Smooth theme transition */
+.theme-transition {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
