@@ -9,7 +9,7 @@ const projects = [
     image: "/projects/project1.png",
     tags: ["HTML", "CSS", "JavaScript"],
     githubUrl: "https://github.com/Ateebamir/Portfolio-projects",
-    demoUrl: "tic-tac-toe-game-virid-kappa-40.vercel.app",
+    demoUrl: "https://tic-tac-toe-game-virid-kappa-40.vercel.app",
   },
   {
     id: 2,
@@ -64,8 +64,8 @@ export const ProjectsSection = () => {
             <motion.div
               key={project.id}
               className="group relative rounded-2xl p-6 bg-white/5 border border-white/10 
-              backdrop-blur-xl shadow-xl hover:shadow-2xl hover:scale-[1.03] 
-              transition-all duration-400 ease-out overflow-hidden flex flex-col"
+               backdrop-blur-xl shadow-xl hover:shadow-2xl hover:scale-[1.03] 
+               transition-all duration-400 ease-out overflow-hidden flex flex-col"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -108,9 +108,9 @@ export const ProjectsSection = () => {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative flex items-center justify-center w-10 h-10 rounded-full 
-                               bg-gray-900 text-white hover:bg-gray-700 
-                               transition-all duration-300 shadow-md overflow-hidden group/github"
+                    className="relative flex items-center justify-center w-10 h-10 rounded-full
+                                bg-gray-900 text-white hover:bg-gray-700
+                                transition-all duration-300 shadow-md overflow-hidden group/github"
                   >
                     <span className="absolute inset-0 bg-white/20 scale-0 group-active/github:scale-150 rounded-full transition-transform duration-500"></span>
                     <Github size={18} className="relative z-10" />
@@ -121,10 +121,10 @@ export const ProjectsSection = () => {
                     href={project.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative flex items-center justify-center w-10 h-10 rounded-full 
-                               bg-gradient-to-r from-orange-500 to-yellow-400 text-white 
-                               shadow-md transition-all duration-300 hover:scale-110 
-                               overflow-hidden group/demo"
+                    className="relative flex items-center justify-center w-10 h-10 rounded-full
+                                bg-gradient-to-r from-orange-500 to-yellow-400 text-white
+                                shadow-md transition-all duration-300 hover:scale-110
+                                overflow-hidden group/demo"
                   >
                     <span className="absolute inset-0 bg-white/30 scale-0 group-active/demo:scale-150 rounded-full transition-transform duration-500"></span>
                     <ArrowUpRight size={18} className="relative z-10" />
