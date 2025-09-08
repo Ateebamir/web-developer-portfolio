@@ -1,4 +1,4 @@
-import { ArrowRight, Github } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 import { motion } from "framer-motion";
 
 const projects = [
@@ -8,7 +8,8 @@ const projects = [
     description: "A fun and interactive Tic Tac Toe game built with React.",
     image: "/projects/project1.png",
     tags: ["HTML", "CSS", "JavaScript"],
-    githubUrl: "https://github.com/Ateebamir/Portfolio-projects", // ✅ main repo
+    githubUrl: "https://github.com/Ateebamir/Portfolio-projects",
+    demoUrl: "#",
   },
   {
     id: 2,
@@ -17,8 +18,8 @@ const projects = [
       "A fun and interactive Rock Paper Scissors game built with JavaScript.",
     image: "/projects/project2.png",
     tags: ["HTML", "CSS", "JavaScript"],
-    githubUrl: "https://github.com/Ateebamir/Portfolio-projects", // ✅ main repo
-    demoUrl: "https://rock-paper-scissors-game-snowy-six.vercel.app", // ✅ DEMO link
+    githubUrl: "https://github.com/Ateebamir/Portfolio-projects",
+    demoUrl: "https://rock-paper-scissors-game-snowy-six.vercel.app",
   },
   {
     id: 3,
@@ -27,7 +28,8 @@ const projects = [
       "Full-featured e-commerce platform with user authentication and payment processing.",
     image: "/projects/project3.png",
     tags: ["React", "Node.js", "Stripe"],
-    githubUrl: "https://github.com/Ateebamir/Portfolio-projects", // ✅ main repo
+    githubUrl: "https://github.com/Ateebamir/Portfolio-projects",
+    demoUrl: "#",
   },
 ];
 
@@ -52,9 +54,11 @@ export const ProjectsSection = () => {
         </h2>
 
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Here are some of my recent projects. Each project was carefully crafted with attention to detail, performance, and user experience.
+          Here are some of my recent projects. Each project was carefully
+          crafted with attention to detail, performance, and user experience.
         </p>
 
+        {/* Project Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <motion.div
@@ -93,42 +97,52 @@ export const ProjectsSection = () => {
                 </div>
 
                 <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4">{project.description}</p>
+                <p className="text-muted-foreground text-sm mb-4">
+                  {project.description}
+                </p>
 
-                {/* GitHub + Demo buttons */}
-                <div className="mt-auto flex justify-between items-center gap-3">
+                {/* GitHub & Demo buttons */}
+                <div className="mt-auto flex gap-3">
+                  {/* GitHub */}
                   <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-foreground/80 hover:text-orange-500 transition-colors duration-300"
+                    className="relative flex items-center justify-center w-10 h-10 rounded-full 
+                               bg-gray-900 text-white hover:bg-gray-700 
+                               transition-all duration-300 shadow-md overflow-hidden group/github"
                   >
-                    <Github size={22} />
+                    <span className="absolute inset-0 bg-white/20 scale-0 group-active/github:scale-150 rounded-full transition-transform duration-500"></span>
+                    <Github size={18} className="relative z-10" />
                   </a>
 
-                  {project.demoUrl && (
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm px-3 py-1 rounded-lg border border-white/10 bg-white/5 hover:bg-orange-500 hover:text-white transition-all duration-300"
-                    >
-                      Demo
-                    </a>
-                  )}
+                  {/* Demo */}
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative flex items-center justify-center w-10 h-10 rounded-full 
+                               bg-gradient-to-r from-orange-500 to-yellow-400 text-white 
+                               shadow-md transition-all duration-300 hover:scale-110 
+                               overflow-hidden group/demo"
+                  >
+                    <span className="absolute inset-0 bg-white/30 scale-0 group-active/demo:scale-150 rounded-full transition-transform duration-500"></span>
+                    <ArrowUpRight size={18} className="relative z-10" />
+                  </a>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
 
+        {/* Big GitHub Button */}
         <div className="text-center mt-12">
           <a
             className="cosmic-button w-fit flex items-center mx-auto gap-2"
             target="_blank"
             href="https://github.com/Ateebamir/Portfolio-projects.git"
           >
-            Check My Github <ArrowRight size={16} />
+            <Github size={18} /> Check My Github
           </a>
         </div>
       </div>
