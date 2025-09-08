@@ -83,7 +83,7 @@ export const SkillsSection = () => {
           {filteredSkills.map((skill) => (
             <motion.div
               key={skill.name}
-              className="bg-card p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-200 group relative overflow-hidden cursor-pointer"
+              className="bg-card p-6 rounded-xl shadow-md transition-shadow duration-200 group relative overflow-hidden"
               variants={{
                 hidden: { opacity: 0, y: 40 },
                 visible: {
