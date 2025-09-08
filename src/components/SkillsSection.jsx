@@ -30,7 +30,7 @@ export const SkillsSection = () => {
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }} // 🕒 thoda slow
+          transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.2 }}
           className="relative text-3xl md:text-4xl font-bold mb-12 text-center"
         >
@@ -49,18 +49,20 @@ export const SkillsSection = () => {
         {/* Category Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {categories.map((category, key) => (
-            <button
+            <motion.button
               key={key}
               onClick={() => setActiveCategory(category)}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 160, damping: 18 }}
               className={cn(
-                "px-5 py-2 rounded-full transition-all duration-200 capitalize shadow-md",
+                "px-5 py-2 rounded-full transition-all duration-200 capitalize shadow-md cursor-pointer",
                 activeCategory === category
                   ? "bg-primary text-primary-foreground scale-105"
                   : "bg-secondary/70 text-foreground hover:bg-secondary"
               )}
             >
               {category}
-            </button>
+            </motion.button>
           ))}
         </div>
 
@@ -74,20 +76,20 @@ export const SkillsSection = () => {
           variants={{
             hidden: {},
             visible: {
-              transition: { staggerChildren: 0.12 }, // 🕒 thoda balanced
+              transition: { staggerChildren: 0.12 },
             },
           }}
         >
           {filteredSkills.map((skill) => (
             <motion.div
               key={skill.name}
-              className="bg-card p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-200 group relative overflow-hidden"
+              className="bg-card p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-200 group relative overflow-hidden cursor-pointer"
               variants={{
                 hidden: { opacity: 0, y: 40 },
                 visible: {
                   opacity: 1,
                   y: 0,
-                  transition: { type: "spring", stiffness: 70, damping: 18 }, // 🕒 smooth speed
+                  transition: { type: "spring", stiffness: 70, damping: 18 },
                 },
               }}
             >
