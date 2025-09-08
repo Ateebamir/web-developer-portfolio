@@ -75,7 +75,10 @@ export const AboutSection = () => {
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-5 pt-6">
-              <a href="#contact" className="cosmic-button text-lg px-8 py-3">
+              <a
+                href="#contact"
+                className="cosmic-button text-lg px-8 py-3 cursor-pointer"
+              >
                 Let’s Connect 🚀
               </a>
 
@@ -84,7 +87,7 @@ export const AboutSection = () => {
                 <button
                   onClick={() => setOpen(!open)}
                   className="px-8 py-3 rounded-full border border-primary/50 text-primary font-medium 
-                  backdrop-blur-md hover:bg-primary/10 transition-all duration-300 shadow-md flex items-center gap-2"
+                  backdrop-blur-md hover:bg-primary/10 transition-all duration-300 shadow-md flex items-center gap-2 cursor-pointer"
                 >
                   <Download className="h-5 w-5" />
                   Download CV
@@ -105,7 +108,7 @@ export const AboutSection = () => {
                         download="Ateeb-Malik-CV.png"
                         onClick={() => setOpen(false)}
                         className="flex items-center gap-3 px-5 py-3 font-semibold text-gray-800 dark:text-gray-200 
-                        hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-yellow-400/20 transition-all duration-200"
+                        hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-yellow-400/20 transition-all duration-200 cursor-pointer"
                       >
                         <Image className="h-5 w-5 text-orange-500" />
                         <span className="bg-gradient-to-r from-orange-500 to-yellow-400 bg-clip-text text-transparent">
@@ -118,7 +121,7 @@ export const AboutSection = () => {
                         download="Ateeb-Malik-CV.pdf"
                         onClick={() => setOpen(false)}
                         className="flex items-center gap-3 px-5 py-3 font-semibold text-gray-800 dark:text-gray-200 
-                        hover:bg-gradient-to-r hover:from-purple-500/20 hover:to-pink-400/20 transition-all duration-200"
+                        hover:bg-gradient-to-r hover:from-purple-500/20 hover:to-pink-400/20 transition-all duration-200 cursor-pointer"
                       >
                         <FileText className="h-5 w-5 text-purple-500" />
                         <span className="bg-gradient-to-r from-purple-500 to-pink-400 bg-clip-text text-transparent">
@@ -144,7 +147,7 @@ export const AboutSection = () => {
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 160, damping: 18 }}
-              className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-lg shadow-lg"
+              className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-lg shadow-lg cursor-pointer"
             >
               <div className="flex items-start gap-5">
                 <div className="p-4 rounded-full bg-gradient-to-tr from-primary to-purple-500 text-white shadow-md">
@@ -164,7 +167,7 @@ export const AboutSection = () => {
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 160, damping: 18 }}
-              className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-lg shadow-lg"
+              className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-lg shadow-lg cursor-pointer"
             >
               <div className="flex items-start gap-5">
                 <div className="p-4 rounded-full bg-gradient-to-tr from-pink-500 to-red-400 text-white shadow-md">
@@ -184,7 +187,7 @@ export const AboutSection = () => {
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 160, damping: 18 }}
-              className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-lg shadow-lg"
+              className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-lg shadow-lg cursor-pointer"
             >
               <div className="flex items-start gap-5">
                 <div className="p-4 rounded-full bg-gradient-to-tr from-green-500 to-emerald-400 text-white shadow-md">
