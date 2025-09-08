@@ -1,7 +1,22 @@
-import { Briefcase, Code, User } from "lucide-react";
-import { motion } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { Briefcase, Code, User, Download, Image, FileText } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const AboutSection = () => {
+  const [open, setOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <motion.section
       id="about"
@@ -9,7 +24,7 @@ export const AboutSection = () => {
       initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6, ease: "easeOut" }} // faster
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <div className="container mx-auto max-w-6xl">
         {/* Heading */}
@@ -18,7 +33,7 @@ export const AboutSection = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: "easeOut" }} // faster
+          transition={{ duration: 0.5, ease: "easeOut" }}
         >
           About{" "}
           <span className="bg-gradient-to-r from-orange-500 to-yellow-400 bg-clip-text text-transparent">
@@ -34,7 +49,7 @@ export const AboutSection = () => {
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }} // faster
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <h3 className="text-2xl md:text-3xl font-semibold leading-snug">
               Passionate{" "}
@@ -64,14 +79,56 @@ export const AboutSection = () => {
                 Let’s Connect 🚀
               </a>
 
-              <a
-                href="/cv.png"
-                download="Ateeb-Malik-CV.png"
-                className="px-8 py-3 rounded-full border border-primary/50 text-primary font-medium 
-                backdrop-blur-sm hover:bg-primary/10 transition-colors duration-300 shadow-sm"
-              >
-                Download CV
-              </a>
+              {/* Pro Download CV Dropdown */}
+              <div className="relative" ref={dropdownRef}>
+                <button
+                  onClick={() => setOpen(!open)}
+                  className="px-8 py-3 rounded-full border border-primary/50 text-primary font-medium 
+                  backdrop-blur-md hover:bg-primary/10 transition-all duration-300 shadow-md flex items-center gap-2"
+                >
+                  <Download className="h-5 w-5" />
+                  Download CV
+                </button>
+
+                <AnimatePresence>
+                  {open && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                      transition={{ duration: 0.2, ease: "easeOut" }}
+                      className="absolute mt-3 w-56 rounded-2xl shadow-2xl bg-white/90 dark:bg-gray-900/90 
+                      border border-gray-200 dark:border-gray-700 backdrop-blur-lg z-50 overflow-hidden"
+                    >
+                      <a
+                        href="/cv.png"
+                        download="Ateeb-Malik-CV.png"
+                        onClick={() => setOpen(false)}
+                        className="flex items-center gap-3 px-5 py-3 font-semibold text-gray-800 dark:text-gray-200 
+                        hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-yellow-400/20 transition-all duration-200"
+                      >
+                        <Image className="h-5 w-5 text-orange-500" />
+                        <span className="bg-gradient-to-r from-orange-500 to-yellow-400 bg-clip-text text-transparent">
+                          Download PNG
+                        </span>
+                      </a>
+
+                      <a
+                        href="/cv.pdf"
+                        download="Ateeb-Malik-CV.pdf"
+                        onClick={() => setOpen(false)}
+                        className="flex items-center gap-3 px-5 py-3 font-semibold text-gray-800 dark:text-gray-200 
+                        hover:bg-gradient-to-r hover:from-purple-500/20 hover:to-pink-400/20 transition-all duration-200"
+                      >
+                        <FileText className="h-5 w-5 text-purple-500" />
+                        <span className="bg-gradient-to-r from-purple-500 to-pink-400 bg-clip-text text-transparent">
+                          Download PDF
+                        </span>
+                      </a>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
           </motion.div>
 
@@ -81,12 +138,12 @@ export const AboutSection = () => {
             initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }} // faster
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
             {/* Card 1 */}
             <motion.div
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 160, damping: 18 }} // smoother + faster
+              transition={{ type: "spring", stiffness: 160, damping: 18 }}
               className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-lg shadow-lg"
             >
               <div className="flex items-start gap-5">
@@ -106,7 +163,7 @@ export const AboutSection = () => {
             {/* Card 2 */}
             <motion.div
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 160, damping: 18 }} // smoother + faster
+              transition={{ type: "spring", stiffness: 160, damping: 18 }}
               className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-lg shadow-lg"
             >
               <div className="flex items-start gap-5">
@@ -126,7 +183,7 @@ export const AboutSection = () => {
             {/* Card 3 */}
             <motion.div
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 160, damping: 18 }} // smoother + faster
+              transition={{ type: "spring", stiffness: 160, damping: 18 }}
               className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-lg shadow-lg"
             >
               <div className="flex items-start gap-5">
