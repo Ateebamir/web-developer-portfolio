@@ -85,7 +85,8 @@ export const ProjectsSection = () => {
               </div>
 
               <div className="p-4 mt-4 flex flex-col flex-grow">
-                <div className="flex flex-wrap gap-2 mb-3">
+                {/* Tags - Centered */}
+                <div className="flex flex-wrap justify-center gap-2 mb-3">
                   {project.tags.map((tag, idx) => (
                     <span
                       key={idx}
@@ -96,8 +97,10 @@ export const ProjectsSection = () => {
                   ))}
                 </div>
 
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4">
+                <h3 className="text-xl font-semibold mb-2 text-center">
+                  {project.title}
+                </h3>
+                <p className="text-muted-foreground text-sm mb-4 text-center">
                   {project.description}
                 </p>
 
