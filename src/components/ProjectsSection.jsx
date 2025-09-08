@@ -101,8 +101,8 @@ export const ProjectsSection = () => {
                   {project.description}
                 </p>
 
-                {/* GitHub & Demo buttons */}
-                <div className="mt-auto flex gap-3">
+                {/* GitHub & Demo buttons - Centered */}
+                <div className="mt-auto flex justify-center gap-3">
                   {/* GitHub */}
                   <a
                     href={project.githubUrl}
