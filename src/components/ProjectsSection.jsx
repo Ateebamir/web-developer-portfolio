@@ -9,7 +9,7 @@ const projects = [
     image: "/projects/project1.png",
     tags: ["HTML", "CSS", "JavaScript"],
     githubUrl: "https://github.com/Ateebamir/Portfolio-projects",
-    demoUrl: "#",
+    demoUrl: "tic-tac-toe-game-virid-kappa-40.vercel.app",
   },
   {
     id: 2,
