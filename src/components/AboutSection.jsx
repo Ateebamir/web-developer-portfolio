@@ -43,13 +43,13 @@ export const AboutSection = () => {
             </h3>
 
             <p className="text-muted-foreground leading-relaxed">
-              "I am a passionate Front-End Developer with{" "}
+              I am a passionate Front-End Developer with{" "}
               <strong className="text-foreground">3+ months</strong> of hands-on
               experience in building modern, responsive, and user-friendly web
               applications. I specialize in crafting clean and interactive
               interfaces while continuously learning new technologies to enhance
               my skills. Driven by curiosity and dedication, I aim to turn ideas
-              into sleek, functional, and scalable digital solutions."
+              into sleek, functional, and scalable digital solutions.
             </p>
 
             <p className="text-muted-foreground leading-relaxed">
