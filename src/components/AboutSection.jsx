@@ -96,8 +96,8 @@ export const AboutSection = () => {
                 <div>
                   <h4 className="font-semibold text-xl">Web Development</h4>
                   <p className="text-muted-foreground mt-2">
-                    "Designing responsive websites and building scalable
-                    applications with modern frameworks and clean code."
+                    Designing responsive websites and building scalable
+                    applications with modern frameworks and clean code.
                   </p>
                 </div>
               </div>
@@ -116,8 +116,8 @@ export const AboutSection = () => {
                 <div>
                   <h4 className="font-semibold text-xl">UI / UX Design</h4>
                   <p className="text-muted-foreground mt-2">
-                    "Designing clean and modern interfaces that make user
-                    journeys simple and smooth."
+                    Designing clean and modern interfaces that make user
+                    journeys simple and smooth.
                   </p>
                 </div>
               </div>
