@@ -18,6 +18,7 @@ const projects = [
     image: "/projects/project2.png",
     tags: ["HTML", "CSS", "JavaScript"],
     githubUrl: "https://github.com/Ateebamir/Portfolio-projects", // ✅ main repo
+    demoUrl: "https://rock-paper-scissors-game-snowy-six.vercel.app", // ✅ DEMO link
   },
   {
     id: 3,
@@ -94,8 +95,8 @@ export const ProjectsSection = () => {
                 <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
                 <p className="text-muted-foreground text-sm mb-4">{project.description}</p>
 
-                {/* Sirf GitHub button - side aligned */}
-                <div className="mt-auto flex justify-between items-center">
+                {/* GitHub + Demo buttons */}
+                <div className="mt-auto flex justify-between items-center gap-3">
                   <a
                     href={project.githubUrl}
                     target="_blank"
@@ -104,6 +105,17 @@ export const ProjectsSection = () => {
                   >
                     <Github size={22} />
                   </a>
+
+                  {project.demoUrl && (
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm px-3 py-1 rounded-lg border border-white/10 bg-white/5 hover:bg-orange-500 hover:text-white transition-all duration-300"
+                    >
+                      Demo
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>
