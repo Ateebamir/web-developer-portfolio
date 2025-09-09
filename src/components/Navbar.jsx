@@ -17,14 +17,6 @@ export const Navbar = () => {
   const [clickedIndex, setClickedIndex] = useState(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // ✅ Force reload at top (hero)
-  useEffect(() => {
-    if (window.location.hash) {
-      window.history.replaceState(null, null, " "); // remove hash (#about)
-      window.scrollTo(0, 0); // go to top
-    }
-  }, []);
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -47,7 +39,6 @@ export const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
 
-    // Theme from localStorage
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme === "dark") {
       setIsDarkMode(true);
@@ -103,7 +94,7 @@ export const Navbar = () => {
         {/* Logo */}
         <a
           href="#hero"
-          className="text-3xl md:text-4xl font-extrabold flex items-center transition-all duration-300 neon-glow"
+          className="text-3xl md:text-4xl font-extrabold flex items-center transition-all duration-300 neon-glow cursor-pointer"
         >
           <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-yellow-400 text-transparent bg-clip-text">
             Web-Developer
