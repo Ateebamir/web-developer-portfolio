@@ -94,16 +94,15 @@ export const Navbar = () => {
     >
       <div className="container flex items-center justify-between relative">
         {/* Logo / Ateeb-Malik */}
-       <a
-  href="#hero"
-  className="text-3xl md:text-4xl font-extrabold flex items-center transition-all duration-300 neon-glow"
->
-  <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-yellow-400 text-transparent bg-clip-text">
-    Web-Developer
-  </span>
-  <span className="ml-2 hidden md:inline text-foreground/80">Portfolio</span>
-</a>
-
+        <a
+          href="#hero"
+          className="text-3xl md:text-4xl font-extrabold flex items-center transition-all duration-300 neon-glow"
+        >
+          <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-yellow-400 text-transparent bg-clip-text">
+            Web-Developer
+          </span>
+          <span className="ml-2 hidden md:inline text-foreground/80">Portfolio</span>
+        </a>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-14">
@@ -114,7 +113,9 @@ export const Navbar = () => {
               onClick={() => handleClick(index)}
               className={cn(
                 "relative font-medium transition-colors duration-300 text-foreground/80 hover:text-orange-500",
-                activeIndex === index ? "text-orange-500 after:absolute after:left-0 after:-bottom-1 after:w-full after:h-0.5 after:bg-orange-500 after:rounded" : ""
+                activeIndex === index
+                  ? "text-orange-500 after:absolute after:left-0 after:-bottom-1 after:w-full after:h-0.5 after:bg-orange-500 after:rounded"
+                  : ""
               )}
             >
               {item.name}
@@ -125,7 +126,7 @@ export const Navbar = () => {
         {/* Theme Toggle */}
         <button
           onClick={toggleTheme}
-          className="hidden md:flex ml-4 p-2 rounded-full bg-background/20 hover:bg-background/40 transition-all duration-300 shadow-md"
+          className="hidden md:flex ml-4 p-2 rounded-full bg-background/20 hover:bg-background/40 transition-all duration-300 shadow-md cursor-pointer hover:scale-110"
         >
           {isDarkMode ? (
             <Sun className="h-6 w-6 text-yellow-300" />
