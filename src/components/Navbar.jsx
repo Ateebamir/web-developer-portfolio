@@ -34,12 +34,12 @@ export const Navbar = () => {
         }
       });
 
-      // Only update activeIndex if no click override
       if (clickedIndex === null) setActiveIndex(current);
     };
 
     window.addEventListener("scroll", handleScroll);
 
+    // Theme from localStorage
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme === "dark") {
       setIsDarkMode(true);
@@ -67,7 +67,6 @@ export const Navbar = () => {
     }
   };
 
-  // Reset click override when section changes on scroll
   useEffect(() => {
     const handleScrollReset = () => {
       if (clickedIndex !== null) {
@@ -76,7 +75,7 @@ export const Navbar = () => {
           const top = section.offsetTop - 80;
           const bottom = top + section.offsetHeight;
           if (!(window.scrollY >= top && window.scrollY < bottom)) {
-            setClickedIndex(null); // remove click override when section left
+            setClickedIndex(null);
           }
         }
       }
@@ -93,7 +92,7 @@ export const Navbar = () => {
       )}
     >
       <div className="container flex items-center justify-between relative">
-        {/* Logo / Ateeb-Malik */}
+        {/* Logo */}
         <a
           href="#hero"
           className="text-3xl md:text-4xl font-extrabold flex items-center transition-all duration-300 neon-glow"
@@ -101,7 +100,9 @@ export const Navbar = () => {
           <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-yellow-400 text-transparent bg-clip-text">
             Web-Developer
           </span>
-          <span className="ml-2 hidden md:inline text-foreground/80">Portfolio</span>
+          <span className="ml-2 hidden md:inline text-foreground/80">
+            Portfolio
+          </span>
         </a>
 
         {/* Desktop Nav */}
@@ -126,7 +127,7 @@ export const Navbar = () => {
         {/* Theme Toggle */}
         <button
           onClick={toggleTheme}
-          className="hidden md:flex ml-4 p-2 rounded-full bg-background/20 hover:bg-background/40 transition-all duration-300 shadow-md cursor-pointer hover:scale-110 !cursor-pointer"
+          className="hidden md:flex ml-4 p-2 rounded-full bg-background/20 hover:bg-background/40 transition-all duration-300 shadow-md cursor-pointer"
         >
           {isDarkMode ? (
             <Sun className="h-6 w-6 text-yellow-300" />
@@ -160,7 +161,7 @@ export const Navbar = () => {
                 href={item.href}
                 onClick={() => handleClick(index)}
                 className={cn(
-                  "text-foreground/80 hover:text-orange-500 cursor-pointer",
+                  "text-foreground/80 hover:text-orange-500",
                   activeIndex === index ? "text-orange-500 underline" : ""
                 )}
               >
