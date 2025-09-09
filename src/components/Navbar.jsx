@@ -126,7 +126,7 @@ export const Navbar = () => {
         {/* Theme Toggle */}
         <button
           onClick={toggleTheme}
-          className="hidden md:flex ml-4 p-2 rounded-full bg-background/20 hover:bg-background/40 transition-all duration-300 shadow-md cursor-pointer hover:scale-110"
+          className="hidden md:flex ml-4 p-2 rounded-full bg-background/20 hover:bg-background/40 transition-all duration-300 shadow-md cursor-pointer hover:scale-110 !cursor-pointer"
         >
           {isDarkMode ? (
             <Sun className="h-6 w-6 text-yellow-300" />
@@ -138,7 +138,7 @@ export const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-foreground z-50 relative top-2"
+          className="md:hidden p-2 text-foreground z-50 relative top-2 cursor-pointer"
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >
           {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
@@ -160,7 +160,7 @@ export const Navbar = () => {
                 href={item.href}
                 onClick={() => handleClick(index)}
                 className={cn(
-                  "text-foreground/80 hover:text-orange-500",
+                  "text-foreground/80 hover:text-orange-500 cursor-pointer",
                   activeIndex === index ? "text-orange-500 underline" : ""
                 )}
               >
