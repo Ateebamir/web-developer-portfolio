@@ -16,23 +16,21 @@ export const ThemeToggle = () => {
         document.documentElement.classList.remove("dark");
       }
     } else {
-      // 👇 default dark if nothing in storage
       localStorage.setItem("theme", "dark");
       setIsDarkMode(true);
       document.documentElement.classList.add("dark");
     }
 
-    // 👇 smooth transition apply on mount
     document.documentElement.classList.add("theme-transition");
     const timer = setTimeout(() => {
       document.documentElement.classList.remove("theme-transition");
-    }, 500); // transition ka duration
+    }, 500);
 
     return () => clearTimeout(timer);
   }, []);
 
   const toggleTheme = () => {
-    document.documentElement.classList.add("theme-transition"); // smooth transition on toggle
+    document.documentElement.classList.add("theme-transition");
 
     if (isDarkMode) {
       document.documentElement.classList.remove("dark");
@@ -50,15 +48,22 @@ export const ThemeToggle = () => {
   };
 
   return (
-    <button
-      onClick={toggleTheme}
-      className="fixed max-sm:hidden top-7 right-7 z-50 p-2 rounded-full transition-colors duration-300 bg-background/20 hover:bg-background/40 shadow-md"
-    >
-      {isDarkMode ? (
-        <Sun className="h-6 w-6 text-yellow-300" />
-      ) : (
-        <Moon className="h-6 w-6 text-orange-400" />
-      )}
-    </button>
+    <div className="relative group">
+      <button
+        onClick={toggleTheme}
+        className="fixed max-sm:hidden top-7 right-7 z-50 p-2 rounded-full transition-colors duration-300 bg-background/20 hover:bg-background/40 shadow-md cursor-pointer"
+      >
+        {isDarkMode ? (
+          <Sun className="h-6 w-6 text-yellow-300" />
+        ) : (
+          <Moon className="h-6 w-6 text-orange-400" />
+        )}
+      </button>
+
+      {/* Tooltip */}
+      <span className="fixed top-16 right-7 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-800 text-white text-xs px-2 py-1 rounded-md shadow-lg pointer-events-none">
+        Toggle Theme
+      </span>
+    </div>
   );
 };
