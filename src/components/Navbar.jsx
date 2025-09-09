@@ -17,6 +17,14 @@ export const Navbar = () => {
   const [clickedIndex, setClickedIndex] = useState(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
+  // ✅ Force reload at top (hero)
+  useEffect(() => {
+    if (window.location.hash) {
+      window.history.replaceState(null, null, " "); // remove hash (#about)
+      window.scrollTo(0, 0); // go to top
+    }
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -113,7 +121,7 @@ export const Navbar = () => {
               href={item.href}
               onClick={() => handleClick(index)}
               className={cn(
-                "relative font-medium transition-colors duration-300 text-foreground/80 hover:text-orange-500",
+                "relative font-medium transition-colors duration-300 text-foreground/80 hover:text-orange-500 cursor-pointer",
                 activeIndex === index
                   ? "text-orange-500 after:absolute after:left-0 after:-bottom-1 after:w-full after:h-0.5 after:bg-orange-500 after:rounded"
                   : ""
@@ -161,7 +169,7 @@ export const Navbar = () => {
                 href={item.href}
                 onClick={() => handleClick(index)}
                 className={cn(
-                  "text-foreground/80 hover:text-orange-500",
+                  "text-foreground/80 hover:text-orange-500 cursor-pointer",
                   activeIndex === index ? "text-orange-500 underline" : ""
                 )}
               >
