@@ -14,10 +14,10 @@ export const ContactSection = () => {
     <motion.section
       id="contact"
       className="py-24 px-4 relative bg-gradient-to-b from-background to-secondary/20"
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
-      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.2 }} // 👈 sirf jab viewport me aaye tabhi chale
     >
       <div className="container mx-auto max-w-4xl">
         {/* Heading */}
@@ -37,7 +37,13 @@ export const ContactSection = () => {
         {/* Contact Info */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
           {/* Email */}
-          <div className="p-8 rounded-2xl backdrop-blur-lg bg-white/5 shadow-lg border border-white/10 flex flex-col items-center text-center group hover:scale-105 transition-transform">
+          <motion.div
+            className="p-8 rounded-2xl backdrop-blur-lg bg-white/5 shadow-lg border border-white/10 flex flex-col items-center text-center group hover:scale-105 transition-transform"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
             <div className="p-5 rounded-full bg-gradient-to-tr from-primary to-purple-500 text-white shadow-md group-hover:scale-110 transition-transform">
               <Mail className="h-7 w-7" />
             </div>
@@ -48,10 +54,16 @@ export const ContactSection = () => {
             >
               Ateeb.amir36@gmail.com
             </a>
-          </div>
+          </motion.div>
 
           {/* Phone */}
-          <div className="p-8 rounded-2xl backdrop-blur-lg bg-white/5 shadow-lg border border-white/10 flex flex-col items-center text-center group hover:scale-105 transition-transform">
+          <motion.div
+            className="p-8 rounded-2xl backdrop-blur-lg bg-white/5 shadow-lg border border-white/10 flex flex-col items-center text-center group hover:scale-105 transition-transform"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             <div className="p-5 rounded-full bg-gradient-to-tr from-green-500 to-emerald-400 text-white shadow-md group-hover:scale-110 transition-transform">
               <Phone className="h-7 w-7" />
             </div>
@@ -62,20 +74,32 @@ export const ContactSection = () => {
             >
               0340-6511270
             </a>
-          </div>
+          </motion.div>
 
           {/* Location */}
-          <div className="p-8 rounded-2xl backdrop-blur-lg bg-white/5 shadow-lg border border-white/10 flex flex-col items-center text-center group hover:scale-105 transition-transform">
+          <motion.div
+            className="p-8 rounded-2xl backdrop-blur-lg bg-white/5 shadow-lg border border-white/10 flex flex-col items-center text-center group hover:scale-105 transition-transform"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
             <div className="p-5 rounded-full bg-gradient-to-tr from-pink-500 to-red-400 text-white shadow-md group-hover:scale-110 transition-transform">
               <MapPin className="h-7 w-7" />
             </div>
             <h4 className="font-semibold text-lg mt-4">Location</h4>
             <p className="text-muted-foreground mt-1">Lahore, Pakistan</p>
-          </div>
+          </motion.div>
         </div>
 
         {/* Social Links */}
-        <div className="mt-16 text-center">
+        <motion.div
+          className="mt-16 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
           <h4 className="font-semibold text-lg mb-6">Connect With Me</h4>
           <div className="flex space-x-6 justify-center">
             <a
@@ -107,7 +131,7 @@ export const ContactSection = () => {
               <Twitch className="h-6 w-6" />
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </motion.section>
   );
