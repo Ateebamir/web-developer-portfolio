@@ -15,8 +15,9 @@ export const ContactSection = () => {
       id="contact"
       className="py-24 px-4 relative bg-gradient-to-b from-background to-secondary/20"
       initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
+      viewport={{ once: true }}
     >
       <div className="container mx-auto max-w-4xl">
         {/* Heading */}
