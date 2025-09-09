@@ -60,9 +60,9 @@ export const ThemeToggle = () => {
         )}
       </button>
 
-      {/* Tooltip */}
+      {/* Tooltip with dynamic text */}
       <span className="fixed top-16 right-7 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-800 text-white text-xs px-2 py-1 rounded-md shadow-lg pointer-events-none">
-        Toggle Theme
+        {isDarkMode ? "Switch to Light" : "Switch to Dark"}
       </span>
     </div>
   );
