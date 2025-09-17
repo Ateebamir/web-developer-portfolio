@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/Beatiful-Portfolio/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/src/style.css" rel="stylesheet">
+    <title>Vite + React</title>
+
+    <!-- 👇 Dark theme preload script -->
+    <script>
+      (function() {
+        const theme = localStorage.getItem("theme") || "dark";
+        if (theme === "dark") {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/Beatiful-Portfolio/assets/index-BbphSNpL.js"></script>
+    <link rel="stylesheet" crossorigin href="/Beatiful-Portfolio/assets/index-COMz-96O.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
