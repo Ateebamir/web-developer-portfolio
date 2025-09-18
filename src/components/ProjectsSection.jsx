@@ -29,7 +29,7 @@ const projects = [
     image: "/projects/project3.png",
     tags: ["React", "Node.js", "Stripe"],
     githubUrl: "https://github.com/Ateebamir/Portfolio-projects",
-    demoUrl: "http://e-commerce-website-taupe-six.vercel.app,
+    demoUrl: "https://e-commerce-website-taupe-six.vercel.app", // Corrected here
   },
 ];
 
