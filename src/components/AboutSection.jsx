@@ -103,6 +103,7 @@ export const AboutSection = () => {
                       className="absolute mt-3 w-56 rounded-2xl shadow-2xl bg-white/90 dark:bg-gray-900/90 
                       border border-gray-200 dark:border-gray-700 backdrop-blur-lg z-50 overflow-hidden"
                     >
+                      {/* PNG Download */}
                       <a
                         href="/cv.png"
                         download="Ateeb-Malik-CV.png"
@@ -116,8 +117,9 @@ export const AboutSection = () => {
                         </span>
                       </a>
 
+                      {/* PDF Download */}
                       <a
-                        href="/cv.pdf"
+                        href="/Ateeb-Malik-CV.pdf"
                         download="Ateeb-Malik-CV.pdf"
                         onClick={() => setOpen(false)}
                         className="flex items-center gap-3 px-5 py-3 font-semibold text-gray-800 dark:text-gray-200 
