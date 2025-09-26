@@ -119,7 +119,7 @@ export const AboutSection = () => {
 
                       {/* PDF CV */}
                       <a
-                        href="/Ateeb-Malik-CV.pdf"
+                        href="/Ateeb-Malik CV.pdf"
                         download="Ateeb-Malik-CV.pdf"
                         onClick={() => setOpen(false)}
                         className="flex items-center gap-3 px-5 py-3 font-semibold text-gray-800 dark:text-gray-200 
