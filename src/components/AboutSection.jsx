@@ -103,7 +103,7 @@ export const AboutSection = () => {
                       className="absolute mt-3 w-56 rounded-2xl shadow-2xl bg-white/90 dark:bg-gray-900/90 
                       border border-gray-200 dark:border-gray-700 backdrop-blur-lg z-50 overflow-hidden"
                     >
-                      {/* PNG Download */}
+                      {/* PNG CV */}
                       <a
                         href="/cv.png"
                         download="Ateeb-Malik-CV.png"
@@ -117,7 +117,7 @@ export const AboutSection = () => {
                         </span>
                       </a>
 
-                      {/* PDF Download */}
+                      {/* PDF CV */}
                       <a
                         href="/Ateeb-Malik-CV.pdf"
                         download="Ateeb-Malik-CV.pdf"
