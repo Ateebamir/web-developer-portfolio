@@ -17,6 +17,25 @@ export const AboutSection = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Download multiple PNG files
+  const handleDownloadPNG = () => {
+    const files = [
+      { href: "/cv.png", filename: "Ateeb-Malik-CV.png" },
+      { href: "/cv(2).png", filename: "Ateeb-Malik-CV-2.png" },
+    ];
+
+    files.forEach(({ href, filename }) => {
+      const link = document.createElement("a");
+      link.href = href;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+
+    setOpen(false);
+  };
+
   return (
     <motion.section
       id="about"
@@ -79,7 +98,7 @@ export const AboutSection = () => {
                 href="#contact"
                 className="cosmic-button text-lg px-8 py-3 cursor-pointer"
               >
-                Let’s Connect 🚀
+                Let's Connect 🚀
               </a>
 
               {/* Pro Download CV Dropdown */}
@@ -103,19 +122,17 @@ export const AboutSection = () => {
                       className="absolute mt-3 w-56 rounded-2xl shadow-2xl bg-white/90 dark:bg-gray-900/90 
                       border border-gray-200 dark:border-gray-700 backdrop-blur-lg z-50 overflow-hidden"
                     >
-                      {/* PNG CV */}
-                      <a
-                        href="/cv.png"
-                        download="Ateeb-Malik-CV.png"
-                        onClick={() => setOpen(false)}
-                        className="flex items-center gap-3 px-5 py-3 font-semibold text-gray-800 dark:text-gray-200 
+                      {/* PNG CV - Downloads both cv.png and cv(2).png */}
+                      <button
+                        onClick={handleDownloadPNG}
+                        className="w-full flex items-center gap-3 px-5 py-3 font-semibold text-gray-800 dark:text-gray-200 
                         hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-yellow-400/20 transition-all duration-200 cursor-pointer"
                       >
                         <Image className="h-5 w-5 text-orange-500" />
                         <span className="bg-gradient-to-r from-orange-500 to-yellow-400 bg-clip-text text-transparent">
                           Download PNG
                         </span>
-                      </a>
+                      </button>
 
                       {/* PDF CV */}
                       <a
